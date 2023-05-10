@@ -10,18 +10,24 @@ namespace EmployeeWageComputation
     {
         static void Main(string[] args)
         {
-            const int IS_PRESENT = 1;
+            const int FULL_TIME = 1;
+            const int EMP_RATE_PER_DAY = 20;
+            int empHrs = 0;
+            int empWage = 0;
             Console.WriteLine("Welocme to the EmployeeWageComputation");
             Random random = new Random();
             int randomInput = random.Next(0, 2);
-            if (IS_PRESENT== randomInput)
+            if (FULL_TIME == randomInput)
             {
+                empHrs = 8;
                 Console.WriteLine("Employee is present");
             }
             else
             {
                 Console.WriteLine("Employee is absent");
             }
+            empWage = EMP_RATE_PER_DAY * empHrs;
+            Console.WriteLine("Employee Wage per day:{0}",empWage);
             Console.ReadLine();
         }
     }
