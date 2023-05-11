@@ -11,16 +11,22 @@ namespace EmployeeWageComputation
         static void Main(string[] args)
         {
             const int FULL_TIME = 1;
+            const int PART_TIME = 2;
             const int EMP_RATE_PER_DAY = 20;
             int empHrs = 0;
             int empWage = 0;
             Console.WriteLine("Welocme to the EmployeeWageComputation");
             Random random = new Random();
-            int randomInput = random.Next(0, 2);
+            int randomInput = random.Next(0, 3);
             if (FULL_TIME == randomInput)
             {
                 empHrs = 8;
-                Console.WriteLine("Employee is present");
+                Console.WriteLine("FullTime employee is present");
+            }
+            else if (PART_TIME == randomInput)
+            {
+                empHrs = 4;
+                Console.WriteLine("PartTime employee is present");
             }
             else
             {
