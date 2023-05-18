@@ -8,32 +8,32 @@ namespace EmployeeWageComputation
 {
     internal class Program
     {
+        public const int FULL_TIME = 1;
+        public const int PART_TIME = 2;
+        public const int EMP_RATE_PER_DAY = 20;
         static void Main(string[] args)
         {
-            const int FULL_TIME = 1;
-            const int PART_TIME = 2;
-            const int EMP_RATE_PER_DAY = 20;
+            
             int empHrs = 0;
             int empWage = 0;
             Console.WriteLine("Welocme to the EmployeeWageComputation");
             Random random = new Random();
             int randomInput = random.Next(0, 3);
-            if (FULL_TIME == randomInput)
+            switch (randomInput)
             {
-                empHrs = 8;
-                Console.WriteLine("FullTime employee is present");
+                case FULL_TIME:
+                    empHrs = 8;
+                    Console.WriteLine("FullTime Employee is present");
+                    break;
+                case PART_TIME:
+                    empHrs = 4;
+                    Console.WriteLine("Part_Time Employee is present");
+                    break;
+                default:
+                    break;
             }
-            else if (PART_TIME == randomInput)
-            {
-                empHrs = 4;
-                Console.WriteLine("PartTime employee is present");
-            }
-            else
-            {
-                Console.WriteLine("Employee is absent");
-            }
-            empWage = EMP_RATE_PER_DAY * empHrs;
-            Console.WriteLine("Employee Wage per day:{0}",empWage);
+            empWage = empHrs * EMP_RATE_PER_DAY;
+            Console.WriteLine("Employee Wage per day:{0}", empWage);
             Console.ReadLine();
         }
     }
