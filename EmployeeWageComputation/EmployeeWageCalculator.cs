@@ -8,43 +8,36 @@ namespace EmployeeWageComputation
 {
     public class EmployeeWageCalculator
     {
-        public const int FULL_TIME = 1;
-        public const int PART_TIME = 2;
-        public const int EMP_RATE_PER_HOUR = 20;
-        public const int MAX_WORKING_DAYS = 20;
-        public const int MAX_WORKING_HRS = 100;
-
-        public static void CalculateEmployeeWage()
+        public static void CalculateEmployeeWage(int empRatePerHour, int maxWorkingDays, int maxWorkingHrs)
         {
             int totalWage = 0;
             int empHrs;
             int empWage;
             int day = 1;
             int totalHrs = 0;
-            Console.WriteLine("Welcome to Employee Wage Computation");
             Random random = new Random();
 
-            while (day <= MAX_WORKING_DAYS && totalHrs < MAX_WORKING_HRS)
+            while (day <= maxWorkingDays && totalHrs < maxWorkingHrs)
             {
                 int randomInput = random.Next(0, 3);
 
                 switch (randomInput)
                 {
-                    case FULL_TIME:
-                        empHrs = 8;
+                    case 0:
+                        empHrs = 8; // Full-time hours
                         Console.WriteLine("Full-time Employee is present");
                         break;
-                    case PART_TIME:
-                        empHrs = 4;
+                    case 1:
+                        empHrs = 4; // Part-time hours
                         Console.WriteLine("Part-time Employee is present");
                         break;
                     default:
-                        empHrs = 0;
+                        empHrs = 0; // Absent hours
                         Console.WriteLine("Employee is Absent");
                         break;
                 }
 
-                empWage = empHrs * EMP_RATE_PER_HOUR;
+                empWage = empHrs * empRatePerHour;
                 totalWage += empWage;
                 totalHrs += empHrs;
                 Console.WriteLine("Employee Wage per day {0}:{1}", day, empWage);
