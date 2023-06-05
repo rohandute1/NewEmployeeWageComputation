@@ -14,7 +14,7 @@ namespace EmployeeWageComputation
         {
             Console.WriteLine("Welcome to Employee Wage Computation\n");
 
-            EmpWageBuilder empWageBuilder = new EmpWageBuilder();
+            IEmpWageCalculator empWageBuilder = new EmpWageBuilder();
             empWageBuilder.AddCompanyEmpWage("Company1", 20, 20, 100);
             empWageBuilder.AddCompanyEmpWage("Company2", 25, 22, 110);
 

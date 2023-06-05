@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
+    public interface IEmpWageCalculator
+    {
+        void AddCompanyEmpWage(string companyName, int empRatePerHour, int maxWorkingDays, int maxWorkingHrs);
+        void CalculateEmployeeWage();
+    }
+
     public class CompanyEmpWage
     {
         public string CompanyName { get; set; }
@@ -24,7 +30,7 @@ namespace EmployeeWageComputation
         }
     }
 
-    public class EmpWageBuilder
+    public class EmpWageBuilder : IEmpWageCalculator
     {
         private readonly CompanyEmpWage[] companyEmpWages;
         private int numOfCompanies;
@@ -88,4 +94,5 @@ namespace EmployeeWageComputation
             }
         }
     }
+
 }
