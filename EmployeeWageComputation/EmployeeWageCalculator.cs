@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    public class EmployeeWageCalculator
+    public class EmpWageBuilder
     {
-        public static void CalculateEmployeeWage(int empRatePerHour, int maxWorkingDays, int maxWorkingHrs)
+        private readonly int empRatePerHour;
+        private readonly int maxWorkingDays;
+        private readonly int maxWorkingHrs;
+        private int totalWage;
+
+        public EmpWageBuilder(int empRatePerHour, int maxWorkingDays, int maxWorkingHrs)
         {
-            int totalWage = 0;
+            this.empRatePerHour = empRatePerHour;
+            this.maxWorkingDays = maxWorkingDays;
+            this.maxWorkingHrs = maxWorkingHrs;
+            totalWage = 0;
+        }
+
+        public void CalculateEmployeeWage()
+        {
             int empHrs;
             int empWage;
             int day = 1;
@@ -45,7 +57,11 @@ namespace EmployeeWageComputation
             }
 
             Console.WriteLine("Total wage for {0} days and {1} hours is: {2}", (day - 1), totalHrs, totalWage);
-            Console.ReadLine();
+        }
+
+        public int GetTotalWage()
+        {
+            return totalWage;
         }
     }
 }

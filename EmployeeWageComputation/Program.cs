@@ -13,23 +13,22 @@ namespace EmployeeWageComputation
         static void Main()
         {
             Console.WriteLine("Welcome to Employee Wage Computation\n");
-            //Company 1
-            Console.WriteLine("Employee wage for company1 is:- \n");
-            int empRatePerHourCompany1 = 20;
-            int maxWorkingDaysCompany1 = 20;
-            int maxWorkingHrsCompany1 = 100;
 
-            EmployeeWageCalculator.CalculateEmployeeWage(empRatePerHourCompany1, maxWorkingDaysCompany1, maxWorkingHrsCompany1);
+            // Company 1
+            Console.WriteLine("Employee wage for company1 is:\n");
+            EmpWageBuilder company1 = new EmpWageBuilder(20, 20, 100);
+            company1.CalculateEmployeeWage();
+            int totalWageCompany1 = company1.GetTotalWage();
 
-            Console.WriteLine("Employee wage for company2 is:- \n");
-            //Company 1
-            int empRatePerHourCompany2 = 25;
-            int maxWorkingDaysCompany2 = 22;
-            int maxWorkingHrsCompany2 = 110;
+            Console.WriteLine("\nEmployee wage for company2 is:\n");
+            // Company 2
+            EmpWageBuilder company2 = new EmpWageBuilder(25, 22, 110);
+            company2.CalculateEmployeeWage();
+            int totalWageCompany2 = company2.GetTotalWage();
 
-            EmployeeWageCalculator.CalculateEmployeeWage(empRatePerHourCompany2, maxWorkingDaysCompany2, maxWorkingHrsCompany2);
-
-
+            Console.WriteLine("\nTotal wage for company1: {0}", totalWageCompany1);
+            Console.WriteLine("Total wage for company2: {0}", totalWageCompany2);
+            Console.ReadLine();
         }
     }
 
