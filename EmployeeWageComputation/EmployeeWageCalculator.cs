@@ -20,6 +20,7 @@ namespace EmployeeWageComputation
         public int MaxWorkingDays { get; set; }
         public int MaxWorkingHrs { get; set; }
         public int TotalWage { get; set; }
+        public List<int> DailyWages { get; set; }
 
         public CompanyEmpWage(string companyName, int empRatePerHour, int maxWorkingDays, int maxWorkingHrs)
         {
@@ -28,16 +29,17 @@ namespace EmployeeWageComputation
             MaxWorkingDays = maxWorkingDays;
             MaxWorkingHrs = maxWorkingHrs;
             TotalWage = 0;
+            DailyWages = new List<int>();
         }
     }
 
     public class EmpWageBuilder : IEmpWageCalculator
     {
-        private ArrayList companyEmpWages;
+        private List<CompanyEmpWage> companyEmpWages;
 
         public EmpWageBuilder()
         {
-            companyEmpWages = new ArrayList();
+            companyEmpWages = new List<CompanyEmpWage>();
         }
 
         public void AddCompanyEmpWage(string companyName, int empRatePerHour, int maxWorkingDays, int maxWorkingHrs)
@@ -82,6 +84,7 @@ namespace EmployeeWageComputation
 
                     empWage = empHrs * empRatePerHour;
                     companyEmpWage.TotalWage += empWage;
+                    companyEmpWage.DailyWages.Add(empWage);
                     totalHrs += empHrs;
                     Console.WriteLine("Employee Wage per day {0}:{1}", day, empWage);
                     day++;
