@@ -11,6 +11,7 @@ namespace EmployeeWageComputation
     {
         void AddCompanyEmpWage(string companyName, int empRatePerHour, int maxWorkingDays, int maxWorkingHrs);
         void CalculateEmployeeWage();
+        int GetTotalWageByCompany(string companyName);
     }
 
     public class CompanyEmpWage
@@ -35,7 +36,7 @@ namespace EmployeeWageComputation
 
     public class EmpWageBuilder : IEmpWageCalculator
     {
-        private List<CompanyEmpWage> companyEmpWages;
+        private readonly List<CompanyEmpWage> companyEmpWages;
 
         public EmpWageBuilder()
         {
@@ -92,6 +93,12 @@ namespace EmployeeWageComputation
 
                 Console.WriteLine("Total wage for {0} of {1} days and {2} hours is: {3}", companyEmpWage.CompanyName, (day - 1), totalHrs, companyEmpWage.TotalWage);
             }
+        }
+
+        public int GetTotalWageByCompany(string companyName)
+        {
+            CompanyEmpWage companyEmpWage = companyEmpWages.Find(company => company.CompanyName == companyName);
+            return companyEmpWage != null ? companyEmpWage.TotalWage : 0;
         }
     }
 

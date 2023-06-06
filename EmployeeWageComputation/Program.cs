@@ -20,6 +20,11 @@ namespace EmployeeWageComputation
 
             empWageBuilder.CalculateEmployeeWage();
 
+            // Query the total wage for a specific company
+            string companyToQuery = "Company1";
+            int totalWage = empWageBuilder.GetTotalWageByCompany(companyToQuery);
+            Console.WriteLine("Total wage for {0}: {1}", companyToQuery, totalWage);
+
             Console.ReadLine();
         }
     }
