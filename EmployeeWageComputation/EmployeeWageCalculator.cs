@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,27 +33,23 @@ namespace EmployeeWageComputation
 
     public class EmpWageBuilder : IEmpWageCalculator
     {
-        private readonly CompanyEmpWage[] companyEmpWages;
-        private int numOfCompanies;
+        private ArrayList companyEmpWages;
 
         public EmpWageBuilder()
         {
-            companyEmpWages = new CompanyEmpWage[5]; // Set the array size as per your requirement
-            numOfCompanies = 0;
+            companyEmpWages = new ArrayList();
         }
 
         public void AddCompanyEmpWage(string companyName, int empRatePerHour, int maxWorkingDays, int maxWorkingHrs)
         {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, empRatePerHour, maxWorkingDays, maxWorkingHrs);
-            companyEmpWages[numOfCompanies] = companyEmpWage;
-            numOfCompanies++;
+            companyEmpWages.Add(companyEmpWage);
         }
 
         public void CalculateEmployeeWage()
         {
-            for (int i = 0; i < numOfCompanies; i++)
+            foreach (CompanyEmpWage companyEmpWage in companyEmpWages)
             {
-                CompanyEmpWage companyEmpWage = companyEmpWages[i];
                 int empRatePerHour = companyEmpWage.EmpRatePerHour;
                 int maxWorkingDays = companyEmpWage.MaxWorkingDays;
                 int maxWorkingHrs = companyEmpWage.MaxWorkingHrs;
